@@ -1,0 +1,32 @@
+---
+title: "GA Countywise population distribution - RMarkdown, Leaflet Assignment"
+author: "Ram Narayanan"
+date: "May 25, 2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+```
+
+## Summary
+This is simple presentation to demonstrate the capability of Leaflet library. 
+This map shows the county wise distribution of population in the state of Georgia based
+on some sample Census data.
+
+Mouse over the blue circles should show the county name and population.
+
+```{r map, echo = FALSE}
+
+library(readr)
+library(leaflet)
+
+gaCountyPopDF <- read_csv("./ga_county_lat_long.csv")
+
+gaCountyPopDF %>%
+  leaflet() %>%
+  addTiles() %>%
+  addCircles(weight = 1, label=gaCountyPopDF$NAMEANDPOPULATION, radius=sqrt(gaCountyPopDF$POPULATION) * 30)
+
+```
+
