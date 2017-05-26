@@ -1,0 +1,27 @@
+---
+title: "GA County population - Plotly Assignment"
+author: "Ram Narayanan"
+date: "May 26, 2017"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+```
+
+## Summary  
+A sample presentation to demonstrate the capability of Plotly library. 
+This chart shows the county wise population in the state of Georgia based
+on some sample Census data.
+
+
+## Georgia, U.S.A Population by County
+
+```{r  echo=FALSE}
+library(plotly)
+library(readr)
+dt <- read_csv("./ga_county_lat_long.csv")
+plot_ly(dt, x = ~NAME, y = ~POPULATION, type = "bar")
+
+```
+
